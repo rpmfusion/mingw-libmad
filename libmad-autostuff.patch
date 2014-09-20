@@ -1,0 +1,53 @@
+Author: František Dvořák <valtri@civ.zcu.cz>
+Date:   Sun Jul 6 20:57:06 2014 +0200
+
+    Fix obsolete macros.
+
+diff --git a/configure.ac b/configure.ac
+index 9b79399..18194f2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,7 +28,7 @@ AC_CONFIG_SRCDIR([decoder.h])
+ 
+ AM_INIT_AUTOMAKE
+ 
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ 
+ dnl System type.
+ 
+@@ -62,7 +62,7 @@ dnl Support for libtool.
+ 
+ dnl AC_DISABLE_SHARED
+ dnl AC_LIBTOOL_WIN32_DLL
+-AC_PROG_LIBTOOL
++LT_INIT
+ 
+ AC_SUBST(LIBTOOL_DEPS)
+ 
+diff --git a/Makefile.am b/Makefile.am
+index 5601f58..255e189 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -54,7 +54,8 @@ EXTRA_libmad_la_SOURCES =	imdct_l_arm.S #synth_mmx.S
+ libmad_la_DEPENDENCIES =	@ASO_OBJS@
+ libmad_la_LIBADD =		@ASO_OBJS@
+ 
+-INCLUDES =		$(FPM) $(ASO)
++AM_CPPFLAGS =		$(FPM) $(ASO)
++ACLOCAL_AMFLAGS = -I m4
+ 
+ BUILT_SOURCES =		mad.h
+ CLEANFILES =		mad.h
+diff --git a/configure.ac b/configure.ac
+index 7608315..c9c5b17 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,6 +25,7 @@ AC_INIT([MPEG Audio Decoder], [0.15.1b], [support@underbit.com], [libmad])
+ AC_PREREQ(2.53)
+ 
+ AC_CONFIG_SRCDIR([decoder.h])
++AC_CONFIG_MACRO_DIR([m4])
+ 
+ AM_INIT_AUTOMAKE
+ 
