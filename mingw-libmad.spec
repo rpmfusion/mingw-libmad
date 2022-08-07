@@ -2,7 +2,7 @@
 
 Name:           mingw-libmad
 Version:        0.15.1b
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        MPEG audio decoder library
 
 License:        GPLv2+
@@ -160,6 +160,10 @@ touch -r mad.h.sed %{buildroot}/%{mingw64_includedir}/mad.h
 
 
 %changelog
+* Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.15.1b-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
+  5.1
+
 * Wed Feb 09 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.15.1b-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
