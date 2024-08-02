@@ -67,11 +67,11 @@ This package is MinGW compiled libmad library for the Win64 target.
 %prep
 %setup -q -n libmad-%{version}
 # apply this patch always for MinGW (otherwise intended only for x86 and ppc)
-%patch0 -p1 -b .multiarch
-%patch1 -p1 -b .ppc
-%patch2 -p1 -b .alt_t2
-%patch3 -p1 -b .thumb
-%patch4 -p1
+%patch -P0 -p1 -b .multiarch
+%patch -P1 -p1 -b .ppc
+%patch -P2 -p1 -b .alt_t2
+%patch -P3 -p1 -b .thumb
+%patch -P4 -p1
 
 # http://sourceforge.net/p/mad/bugs/32/
 sed -i -e /-fforce-mem/d configure* # -fforce-mem gone in gcc 4.2, noop earlier
